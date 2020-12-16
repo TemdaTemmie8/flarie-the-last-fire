@@ -130,6 +130,28 @@ mySprite = sprites.create(img`
     . . . 4 2 2 f f 2 2 4 . . . . . 
     . . . . 4 4 4 2 4 4 . . . . . . 
     `, SpriteKind.Player)
+let myEnemy = sprites.create(img`
+    ..............9669..
+    .............996669.
+    ............9...6..9
+    ...............86...
+    ...............88...
+    .............cc8....
+    .........cccc63c....
+    ........c633336c....
+    .......c66333333c...
+    ......c6666333333c..
+    ...ccccc66cc33333c..
+    ..b55c33cc55c333cc..
+    ..ff5ccc3c5ff666cc..
+    ..ff5ccccc5ff3333c..
+    ...b553c355c33333c..
+    ...c4455554cc333c...
+    ..c4554444554cbb....
+    ..c555c4c555c4c5c...
+    ..c5555c5555c4c5c...
+    ...ccccccccc..ccc...
+    `, SpriteKind.Enemy)
 controller.moveSprite(mySprite, 100, 100)
 mySprite.startEffect(effects.fire)
 mySprite.startEffect(effects.fire)
@@ -256,3 +278,8 @@ scene.setBackgroundImage(img`
     22222222222222222222222222222222222222222222222222222222cccffffffffcccccccccc22222222222222222222222222222222222222222222222222222222222222222222222222222222222
     `)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
+myEnemy.follow(mySprite, 50)
+forever(function () {
+    myEnemy.setPosition(149, 108)
+    pause(2000)
+})
